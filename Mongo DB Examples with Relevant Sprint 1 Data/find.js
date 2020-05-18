@@ -6,7 +6,7 @@ MongoClient.connect(url, function(err, db) {
   var dbo = db.db("SEERdb");
   dbo.collection("SEER").findOne({}, function(err, result) {
     if (err) throw err;
-    console.log(result.article);
+    console.log(result.title);
     db.close();
   });
 });
