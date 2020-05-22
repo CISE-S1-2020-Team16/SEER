@@ -14,7 +14,7 @@ Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `Nodemon index.js`
+### `nodemon index.js`
 
 Launchers the Server Side Code for the application.<br />
 Make sure to run this in the Server Folder.
