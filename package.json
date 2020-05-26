@@ -2,6 +2,7 @@
   "name": "SEER",
   "version": "1.0.0",
   "description": "Software Evidence Entry Repositry.",
+  "license": "MIT",
   "main": "server.js",
   "scripts": {
     "dev": "run-p dev:**",
@@ -29,11 +30,16 @@
     "dotenv-safe": "^8.2.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "jquery": "^3.5.1",
     "mongodb": "^3.5.7",
     "morgan": "~1.9.1",
+    "popper.js": "^1.16.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "run-p": "0.0.0",
     "styled-components": "^4.2.0",
+    "typescript": "^3.9.3",
     "yarn": "^1.22.4"
   },
   "devDependencies": {
