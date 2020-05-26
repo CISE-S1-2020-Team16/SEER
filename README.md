@@ -1,20 +1,12 @@
+# SEER for CISE AUT
+![Travis CI Badge](https://travis-ci.com/CISE-S1-2020-Team16/SEER.svg?token=4nyALuhy4qcYnQYyzo9n&branch=master)
+
+_Software Engineering Evidence Repository_ is a searchable database of evidence which has been curated by SE experts for anyone in the SE field. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Running Locally
 
 In the project directory, you can run:
 
 ### `yarn start` or `npm start`
-
-
-Runs the app in the development mode.<br />
-Make sure to run this in the Client Folder <br />
-Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `nodemon index.js` or `node index.js`
-
-Launchers the Server Side Code for the application.<br />
-Make sure to run this in the Server Folder.
