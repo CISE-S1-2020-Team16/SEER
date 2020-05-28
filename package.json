@@ -1,18 +1,45 @@
 {
-  "name": "seer",
+  "name": "SEER",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Software Evidence Entry Repositry.",
+  "main": "server.js",
   "scripts": {
-    
-    "client-install": "cd client && npm install",
-    "start": "node ./server/index.js",
-    "server": "nodemon ./server/index.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "dev": "run-p dev:**",
+    "dev:server": "nodemon --ignore './client/' server.js",
+    "dev:app": "cd client && npm start",
+    "build:app": "cd client && npm build",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CISE-S1-2020-Team16/SEER.git"
+  },
+  "author": "Finn S, Tim B, Marcus K",
+  "bugs": {
+    "url": "https://github.com/CISE-S1-2020-Team16/SEER/issues"
+  },
+  "homepage": "https://github.com/CISE-S1-2020-Team16/SEER#readme",
+  "dependencies": {
+    "axios": "^0.18.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv-safe": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongodb": "^3.5.7",
+    "morgan": "~1.9.1",
+    "react-scripts": "^3.4.1",
+    "run-p": "0.0.0",
+    "styled-components": "^4.2.0",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5"
+  }
+
 }
