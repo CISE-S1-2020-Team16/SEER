@@ -1,5 +1,5 @@
 {
-  "name": "SEER",
+  "name": "seer",
   "version": "1.0.0",
   "description": "Software Evidence Entry Repositry.",
   "main": "server.js",
