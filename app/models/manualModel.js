@@ -1,28 +1,14 @@
 const mongoose = require('mongoose');
-
-var authorSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: {
-        firstName: String,
-        lastName: String
-    }
-});
+var authorSchema = require('./schemas/authorSchema');
 
 var manualSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    type: {
-        type: String,
-        enum: {manual}
-    },
+    type: "manual",
     title: String,
-    journal: String,
-    year: Number,
-    volume: Number,
-    number: Number,
-    pages: {
-        from: Number,
-        to: Number
-    } 
+    authors: [{author: authorSchema}],
+    organisation: String,
+    address: String,
+    year: Number
 });
 
 const evidenceSchema = mongoose.Schema({

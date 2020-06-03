@@ -1,1 +1,8 @@
 language: node_js
+
+deploy:
+  provider: heroku
+  api_key: ...
+  app:
+    master: seer-staging
+    production: cise-s1-2020-team16

@@ -1,16 +1,16 @@
 {
-  "name": "SEER",
+  "name": "seer",
   "version": "1.0.0",
   "description": "Software Evidence Entry Repositry.",
   "license": "MIT",
-  "main": "server.js",
+  "main": "./app/server.js",
   "scripts": {
     "dev": "run-p dev:**",
-    "dev:server": "nodemon --ignore './client/' server.js",
-    "dev:app": "cd client && npm start",
-    "build:app": "cd client && npm build",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "dev:server": "nodemon --ignore './app/client/' app/server.js",
+    "dev:app": "cd app/client && npm start",
+    "build:app": "cd app/client && npm build",
+    "start": "node app/server.js",
+    "heroku-postbuild": "cd app/client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -40,9 +40,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "path": "^0.12.7",
-    "popper.js": "^1.16.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "run-p": "0.0.0",
     "styled-components": "^4.2.0",

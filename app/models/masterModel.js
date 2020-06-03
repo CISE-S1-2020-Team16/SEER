@@ -1,28 +1,15 @@
 const mongoose = require('mongoose');
-
-var authorSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: {
-        firstName: String,
-        lastName: String
-    }
-});
+var authorSchema = require('./schemas/authorSchema');
 
 var masterthesisSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    type: "masterthesis",
     title: String,
-    type: {
-        type: String,
-        default: "masterthesis"
-    },
-    journal: String,
+    authors: [{author: authorSchema}],
+    school: String,
     year: Number,
-    volume: Number,
-    number: Number,
-    pages: {
-        from: Number,
-        to: Number
-    } 
+    address: String,
+    month: String
 });
 
 const evidenceSchema = mongoose.Schema({

@@ -1,34 +1,16 @@
 const mongoose = require('mongoose');
-
-var authorSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: {
-        firstName: String,
-        lastName: String
-    }
-});
+var authorSchema = require('./schemas/authorSchema');
 
 var incollectionSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    type: "incollection",
     title: String,
     booktitle: String,
-    authors: [
-        author: { 
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: 'Author'
-        }
-    ],
-    editor: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Editor'
-    },
-    type: {
-        type: String,
-        default: "incollection",
-    },
+    authors: [{author: authorSchema}],
+    editors: [{editor: authorSchema}],
+    year: Number,
     publisher: String,
     address: String,
-    year: Number,
     pages: {
         from: Number,
         to: Number

@@ -1,20 +1,12 @@
 const mongoose = require('mongoose');
-
-var authorSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    name: {
-        firstName: String,
-        lastName: String
-    }
-});
+//Not sure if I need to import schemas?
+var authorSchema = require('./schemas/authorSchema');
 
 var bookletSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    type: "booklet",
     title: String,
-    type: {
-        type: String,
-        default: "booklet",
-    },
+    authors: [{author: authorSchema}],
     howpublished: String,
     month: Number,
     year: Number
