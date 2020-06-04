@@ -1,5 +1,5 @@
 {
-  "name": "SEER",
+  "name": "seer",
   "version": "1.0.0",
   "description": "Software Evidence Entry Repositry.",
   "main": "server.js",
@@ -8,7 +8,7 @@
     "dev:server": "nodemon --ignore './client/' server.js",
     "dev:app": "cd client && npm start",
     "build:app": "cd client && npm build",
-    "test": mocha,
+    "test": "mocha",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
