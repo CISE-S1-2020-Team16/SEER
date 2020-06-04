@@ -3,10 +3,3 @@
 
 _Software Engineering Evidence Repository_ is a searchable database of evidence which has been curated by SE experts for anyone in the SE field. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Running Locally
-
-In the project directory, you can run:
-
-### `yarn start` or `npm start`
