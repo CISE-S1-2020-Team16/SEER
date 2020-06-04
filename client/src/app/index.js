@@ -19,6 +19,7 @@ function App() {
                     exact
                     component={ArticlesUpdate}
                 />
+                
             </Switch>
         </Router>
     )
