@@ -15,7 +15,8 @@ const Article = new Schema(
         pages: [Number],
         month: Number, 
 		sourcetype: [ 'article', 'book','booklet','conference','inbook','incollection','inprocceedings','manual','masterthesis','misc','phdthesis','proceedings','techreport','unpublished'] ,
-		rating : Number
+		credibilityrating : Number,
+		confidencerating : Number
 		} , 
 		
 		

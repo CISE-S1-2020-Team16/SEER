@@ -68,16 +68,7 @@ class ArticlesList extends Component {
             })
         })
     }
-    renderSearch() {
-        return (
-          <ReactSearchBox
-            placeholder="Placeholder"
-            value="Doe"
-            data={this.articles}
-            callback={record => console.log(record)}
-          />
-        )
-      }
+
 
     render() {
         const { articles, isLoading } = this.state
@@ -144,12 +135,7 @@ class ArticlesList extends Component {
                 Cell: function(props) {
                     return (
                         <span>
-                              <ReactSearchBox
-              placeholder="Placeholder"
-              value="Doe"
-              data={this.data}
-              callback={record => console.log(record)}
-            />
+                            <DeleteArticle id={props.original._id} />
                         </span>
                     )
                 },
@@ -185,16 +171,10 @@ class ArticlesList extends Component {
                         showPageSizeOptions={true}
                         minRows={0}
                     />
-
-                    
                 )}
-            
             </Wrapper>
             
-            
         )
-
-        
     }
 }
 
