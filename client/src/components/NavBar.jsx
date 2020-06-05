@@ -12,6 +12,7 @@ const Nav = styled.nav.attrs({
     className: 'navbar navbar-expand-lg navbar-dark bg-dark',
 })`
     margin-bottom: 20 px;
+    margin-left: 0px;
 `
 
 class NavBar extends Component {

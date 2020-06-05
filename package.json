@@ -33,7 +33,10 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.16",
     "morgan": "~1.9.1",
+    "node-sass": "^4.14.1",
+    "react-bootstrap": "^1.0.1",
     "react-scripts": "^3.4.1",
+    "react-search-box": "^2.0.2",
     "run-p": "0.0.0",
     "styled-components": "^4.2.0",
     "yarn": "^1.22.4"

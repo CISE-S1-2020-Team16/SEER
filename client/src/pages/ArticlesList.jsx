@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table'
 import api from '../api'
-
+import ReactSearchBox from 'react-search-box'
 import styled from 'styled-components'
 
 import 'react-table/react-table.css'
@@ -68,6 +68,16 @@ class ArticlesList extends Component {
             })
         })
     }
+    renderSearch() {
+        return (
+          <ReactSearchBox
+            placeholder="Placeholder"
+            value="Doe"
+            data={this.articles}
+            callback={record => console.log(record)}
+          />
+        )
+      }
 
     render() {
         const { articles, isLoading } = this.state
@@ -134,7 +144,12 @@ class ArticlesList extends Component {
                 Cell: function(props) {
                     return (
                         <span>
-                            <DeleteArticle id={props.original._id} />
+                              <ReactSearchBox
+              placeholder="Placeholder"
+              value="Doe"
+              data={this.data}
+              callback={record => console.log(record)}
+            />
                         </span>
                     )
                 },
@@ -159,6 +174,7 @@ class ArticlesList extends Component {
         }
 
         return (
+            
             <Wrapper>
                 {showTable && (
                     <ReactTable
@@ -169,9 +185,16 @@ class ArticlesList extends Component {
                         showPageSizeOptions={true}
                         minRows={0}
                     />
+
+                    
                 )}
+            
             </Wrapper>
+            
+            
         )
+
+        
     }
 }
 
