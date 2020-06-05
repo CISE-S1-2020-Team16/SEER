@@ -55,6 +55,7 @@ class ArticlesList extends Component {
             articles: [],
             columns: [],
             isLoading: false,
+            sortOptions: [{id: 'title', desc: true},{ id: 'article', desc: true}]
         }
     }
 
@@ -162,6 +163,9 @@ class ArticlesList extends Component {
             <Wrapper>
                 {showTable && (
                     <ReactTable
+                        sorted={this.state.sortOptins}
+                        onSortedChange={val => {
+                            this.setState({ sortOptions : val })  }}
                         data={articles}
                         columns={columns}
                         loading={isLoading}
