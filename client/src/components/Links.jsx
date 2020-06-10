@@ -33,11 +33,6 @@ class Links extends Component {
                                 Create Article
                             </Link>
                         </Item>
-                        <Item>
-                            <Link to="/articles/search" className="nav-link">
-                                Search Article
-                            </Link>
-                        </Item>
                     </List>
                 </Collapse>
             </React.Fragment>
