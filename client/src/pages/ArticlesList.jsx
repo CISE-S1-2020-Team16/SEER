@@ -310,6 +310,7 @@ function Table({ columns, data }) {
                   {column.render('Header')}
                   {/* Render the columns filter UI */}
                   <div>{column.canFilter ? column.render('Filter') : null}</div>
+                  
                   <span>
                     {column.isSorted
                       ? column.isSortedDesc
@@ -317,6 +318,7 @@ function Table({ columns, data }) {
                         : ' 🔼'
                       : ''}
                   </span>
+                  
                 </th>
               ))}
             </tr>
@@ -437,14 +439,14 @@ class ArticlesList extends Component {
           {
             Header: 'Credibility Rating',
             accessor: 'credibilityrating',
-            Filter: SelectColumnFilter,
-            filter: 'includes',
+            Filter: SliderColumnFilter,
+            filter: filterGreaterThan,
           },
           {
             Header: 'confidence rating',
             accessor: 'confidencerating',
-            Filter: SelectColumnFilter,
-            filter: 'includes',
+            Filter: SliderColumnFilter,
+            filter: filterGreaterThan,
           },
           {
             Header: 'Research Question',
@@ -466,13 +468,41 @@ class ArticlesList extends Component {
             Header: 'Month',
             accessor: 'month',
             Filter: SelectColumnFilter,
-            filter: 'includes',
+            
           },
           {
-            Header: 'Profile Progress',
-            accessor: 'progress',
-            Filter: SliderColumnFilter,
-            filter: filterGreaterThan,
+            Header: 'Research Method',
+            accessor: 'researchmethod',
+            Filter: SelectColumnFilter,
+            
+
+          },
+          {
+            Header: 'Research Outcome',
+            accessor: 'outcome',
+            Filter: SelectColumnFilter,
+            
+
+          },
+          {
+            Header: 'Sofware Engineering Method',
+            accessor: 'semethod',
+            Filter: SelectColumnFilter,
+
+
+          },
+          {
+            Header: 'Sofware Engineering Methodoligies',
+            accessor: 'semethodologies',
+            Filter: SelectColumnFilter,
+
+
+          },
+          {
+            Header: 'Date Added',
+            accessor: 'date',
+
+
           },
         ],
       },
