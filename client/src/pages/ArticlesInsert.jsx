@@ -78,7 +78,6 @@ class ArticlesInsert extends Component {
         this.setState({ year })
        
     }
-
     handleChangeInputVolume = async event => {
         const volume = event.target.value
         this.setState({ volume })
