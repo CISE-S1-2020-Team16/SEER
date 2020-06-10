@@ -291,12 +291,11 @@ function Table({ columns, data }) {
           All
         </div>
         {allColumns.map(column => (
-          <div key={column.id}>
             <label>
-              <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
+              <input type="checkbox" {...column.getToggleHiddenProps()} />{'  '}
               {column.id}
             </label>
-          </div>
+          
         ))}
         <br />
       </div>
