@@ -9,6 +9,7 @@
     "dev:app": "cd client && npm start",
     "build:app": "cd client && npm build",
     "start": "node server.js",
+    "test": "mocha",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
@@ -24,12 +25,14 @@
     "axios": "^0.18.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
+    "chia": "0.0.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv-safe": "^8.2.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "mocha": "^7.2.0",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.16",
     "morgan": "~1.9.1",
