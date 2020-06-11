@@ -1,6 +1,8 @@
+
 import React, { Component } from "react";
 import api from "../api";
-import Select from "react-select";
+import AsyncSelect from 'react-select/async';
+import { sourceTypeoptions, researchParicipantoptions, researchmethod, researchOutcomeoptions, seMethodologiesoptions, seMethodoptions } from './DropdownData';
 
 import styled from "styled-components";
 
@@ -44,86 +46,11 @@ const CancelButton = styled.a.attrs({
 })`
   margin: 15px 15px 15px 5px;
 `;
-const sourceTypeoptions = [
-  { value: "article", label: "Article" },
-  { value: "book", label: "Book" },
-  { value: "booklet", label: "Booklet" },
-  { value: "conference", label: "Conference" },
-  { value: "inbook", label: "Inbook" },
-  { value: "incollection", label: "Incollection" },
-  { value: "inprocceedings", label: "Inprocceedings" },
-  { value: "manual", label: "Manual" },
-  { value: "masterthesis", label: "Master Thesis" },
-  { value: "misc", label: "Misc" },
-  { value: "phdthesis", label: "PHD Thesis" },
-  { value: "proceedings", label: "Proceedings" },
-  { value: "techreport", label: "Tech Report" },
-  { value: "unpublished", label: "Unpublished" },
-];
-const researchParicipantoptions = [
-  { value: 'undergraduate', label: 'Under-Graduate' },    
-  { value: 'postgraduate', label: 'Post-Graduate' },
-  { value: 'practitioners', label: 'Practitioners' },
-];
-const researchMethodoptions = [
-    { value: 'case study', label: 'Case Study' },   
-    { value: 'field-observation', label: 'Field Observation' },
-    { value: 'experiment', label: 'Experiment' },    
-    { value: 'interview', label: 'Interview' },
-    { value: 'survey', label: 'Survey' },
-];
 
-const researchOutcomeoptions = [
-    { value: 'yes', label: 'Yes' }, 
-    { value: 'no', label: 'No' }, 
-    { value: 'sometimes', label: 'Sometimes' }, 
-];
 
-const seMethodologiesoptions = [
-    { value: 'scrum', label: 'Scrum' }, 
-    { value: 'waterfall', label: 'Waterfall' }, 
-    { value: 'spiral', label: 'Spiral' }, 
-    { value: 'xp', label: 'XP' }, 
-    { value: 'rational', label: 'Rational' }, 
-    { value: 'unified proccess', label: 'Unified Proccess' }, 
-    { value: 'crystal', label: 'Crystal' }, 
-    { value: 'clean room', label: 'Clean Room' }, 
-    { value: 'feature driven development', label: 'Feature Driven Development' }, 
-    { value: 'model driven development', label: 'Model Driven Development' }, 
-    { value: 'domain driven development', label: 'Domain Driven Development' }, 
-    { value: 'formal methods', label: 'Formal Methods' }, 
-    { value: 'problem driven development', label: 'Problem Driven Development' }, 
-    { value: 'cloud computing', label: 'Cloud Computing' },  
-    { value: 'service oriented development', label: 'Service Oriented Development' }, 
-    { value: 'valuse driven development', label: 'Value Driven Development' }, 
-    { value: 'product driven development', label: 'Product Driven Development' }, 
-    { value: 'agile', label: 'Agile' }, 
-];
 
-const seMethodoptions = [
-    { value: 'tdd', label: 'TDD' },
-    { value: 'bdd', label: 'BDD' },
-    { value: 'pair programming', label: 'Pair Programming' },
-    { value: 'planning poker', label: 'Planning Poker' },
-    { value: 'daily standup', label: 'Daily Standup' },
-    { value: 'story boards', label: 'Story Boards' },
-    { value: 'user story mapping', label: 'User Story Mapping' },
-    { value: 'continous', label: 'Continous' },
-    { value: 'intergration', label: 'Intergration' },
-    { value: 'retrospectives', label: 'Retrospectives' },
-    { value: 'burndown charts', label: 'Burndown Charts' },
-    { value: 'requirements', label: 'Requirements' },
-    { value: 'requirements prioritisation', label: 'Requirements Prioritisation' },
-    { value: 'version control', label: 'Version Control' },
-    { value: 'code sharing', label: 'Code Sharing' },
-];
 
-const statusTypeoptions = [
-    { value: 'to be moderated', label: 'to be moderated' },
-    { value: 'accepted', label: 'accepted' },
-    { value: 'rejected', label: 'rejected'},
-    { value: 'analysis accepted', label: 'analysis accepted'}
-];
+
 
 class ArticlesInsert extends Component {
   constructor(props) {
@@ -150,9 +77,11 @@ class ArticlesInsert extends Component {
       semethodologies: "",
       semethod: "",
       statustype: "",
+      
     };
   }
 
+  
   handleChangeInputStatusType = async (event) => {
     const statustype = event.target.value;
     this.setState({ statustype });
@@ -185,7 +114,7 @@ class ArticlesInsert extends Component {
     const requestion = event.target.value;
     this.setState({ requestion });
   };
-  handleChangeInputSourceType = async (event) => {
+  handleChangeInputSourceType =async (event) => {
     const sourcetype = event.target.value;
     this.setState({ sourcetype });
   };
@@ -237,6 +166,13 @@ class ArticlesInsert extends Component {
     this.setState({ month });
   };
 
+
+  handleChange = async (event) => {
+    const sourcetype = event.target.value;
+    this.setState({ sourcetype});
+  }
+
+
   handleIncludeArticle = async () => {
     const {
       article,
@@ -260,6 +196,7 @@ class ArticlesInsert extends Component {
       semethod,
       statustype,
     } = this.state;
+
     const payload = {
       article,
       author,
@@ -309,20 +246,17 @@ class ArticlesInsert extends Component {
       });
     });
   };
+  
 
-  state = {
-    selectedOption: null,
-  };
-  handleChange = selectedOption => {
-    const sourcetype = selectedOption;
-    this.setState(
-      { sourcetype },
-      () => console.log(`Option selected:`, this.state.selectedOption)
-    );
-  };
+  
+  
+
+
+
 
 
   render() {
+      
     const {
       article,
       author,
@@ -344,7 +278,7 @@ class ArticlesInsert extends Component {
       semethodologies,
       semethod,
       statustype,
-      selectedOption
+      
     } = this.state;
 
     return (
@@ -405,13 +339,98 @@ class ArticlesInsert extends Component {
           value={month}
           onChange={this.handleChangeInputMonth}
         />
-
         <Label>Source Type: </Label>
-        <Select
-          value={sourcetype}
-          onChange={this.handleChange}
-          options={sourceTypeoptions}
-        />
+          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+            <option value="article">article</option>
+            <option value="book">book</option>
+            <option value="booklet">booklet</option>
+            <option value="conference">conference</option>
+            <option value="inbook">inbook</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="manual">manual</option>
+            <option value="masterthesis">masterthesis</option>
+            <option value="misc">misc</option>
+            <option value="phdthesis">phdthesis</option>
+            <option value="proceedings">proceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="unpublished">unpublished</option>
+          </select>
+          <Label>Research Participants: </Label>
+          <select value={researchparticipants} onChange={this.handleChangeInputResearchParticipants}>
+            <option value="undergraduate">Under Graduate</option>
+            <option value="postgraduate">Post Graduate</option>
+            <option value="practitioners">Practitioners</option>
+          </select>
+          <Label>Research Methods: </Label>
+          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+            <option value="case study">article</option>
+            <option value="book">book</option>
+            <option value="booklet">booklet</option>
+            <option value="conference">conference</option>
+            <option value="inbook">inbook</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="manual">manual</option>
+            <option value="masterthesis">masterthesis</option>
+            <option value="misc">misc</option>
+            <option value="phdthesis">phdthesis</option>
+            <option value="proceedings">proceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="unpublished">unpublished</option>
+          </select>
+          <Label>Source Type: </Label>
+          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+            <option value="article">article</option>
+            <option value="book">book</option>
+            <option value="booklet">booklet</option>
+            <option value="conference">conference</option>
+            <option value="inbook">inbook</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="manual">manual</option>
+            <option value="masterthesis">masterthesis</option>
+            <option value="misc">misc</option>
+            <option value="phdthesis">phdthesis</option>
+            <option value="proceedings">proceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="unpublished">unpublished</option>
+          </select>
+          <Label>Source Type: </Label>
+          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+            <option value="article">article</option>
+            <option value="book">book</option>
+            <option value="booklet">booklet</option>
+            <option value="conference">conference</option>
+            <option value="inbook">inbook</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="manual">manual</option>
+            <option value="masterthesis">masterthesis</option>
+            <option value="misc">misc</option>
+            <option value="phdthesis">phdthesis</option>
+            <option value="proceedings">proceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="unpublished">unpublished</option>
+          </select>
+          <Label>Source Type: </Label>
+          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+            <option value="article">article</option>
+            <option value="book">book</option>
+            <option value="booklet">booklet</option>
+            <option value="conference">conference</option>
+            <option value="inbook">inbook</option>
+            <option value="incollection">incollection</option>
+            <option value="inproceedings">inproceedings</option>
+            <option value="manual">manual</option>
+            <option value="masterthesis">masterthesis</option>
+            <option value="misc">misc</option>
+            <option value="phdthesis">phdthesis</option>
+            <option value="proceedings">proceedings</option>
+            <option value="techreport">techreport</option>
+            <option value="unpublished">unpublished</option>
+          </select>
+
 
         <Button onClick={this.handleIncludeArticle}>Add Article</Button>
         <CancelButton href={"/articles/list"}>Cancel</CancelButton>
@@ -421,3 +440,4 @@ class ArticlesInsert extends Component {
 }
 
 export default ArticlesInsert;
+   
