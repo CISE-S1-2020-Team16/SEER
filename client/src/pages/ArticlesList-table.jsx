@@ -313,9 +313,9 @@ function Table({ columns, data }) {
         <thead>
           {headerGroups.map(headerGroup => (
             
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr class="row"{...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th{...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th class="col-2"{...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   {/* Render the columns filter UI */}
                   <div>{column.canFilter ? column.render('Filter') : null}</div>
@@ -333,7 +333,7 @@ function Table({ columns, data }) {
             </tr>
           ))}
           <tr>
-            <th
+            <th class="col-7"
               colSpan={visibleColumns.length}
               style={{
                 textAlign: 'left',

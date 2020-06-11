@@ -36,7 +36,7 @@ const Article = new Schema(
 
 		statustype: ['to be moderated','accepted','rejected','analysis accepted'],
 		date: { type: Date, default: Date.now },
-		username: String,
+		
 
 		
 	
