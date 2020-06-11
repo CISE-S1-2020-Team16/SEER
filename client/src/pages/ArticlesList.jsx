@@ -439,13 +439,13 @@ class ArticlesList extends Component {
             Header: 'Credibility Rating',
             accessor: 'credibilityrating',
             Filter: SliderColumnFilter,
-            filter: filterGreaterThan,
+            filter: 'equals',
           },
           {
             Header: 'confidence rating',
             accessor: 'confidencerating',
             Filter: SliderColumnFilter,
-            filter: filterGreaterThan,
+            filter: 'equals',
           },
           {
             Header: 'Research Question',
