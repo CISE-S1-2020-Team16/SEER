@@ -4,35 +4,37 @@ import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy } fr
 // A great library for fuzzy filtering/sorting items
 import matchSorter from 'match-sorter'
 import api from '../api'
+import stylesheet from './stylesheet.css'
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Styles = styled.div`
-  padding: 1rem;
+//   padding: 1rem;
 
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
+//   table {
+//     border-spacing: 0;
+//     border: 1px solid black;
 
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
+//     tr {
+//       :last-child {
+//         td {
+//           border-bottom: 0;
+//         }
+//       }
+//     }
 
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
+//     th,
+//     td {
+//       margin: 0;
+//       padding: 0.5rem;
+//       border-bottom: 1px solid black;
+//       border-right: 1px solid black;
 
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`
+//       :last-child {
+//         border-right: 0;
+//       }
+//     }
+//   }
+// `
 const IndeterminateCheckbox = React.forwardRef(
     ({ indeterminate, ...rest }, ref) => {
       const defaultRef = React.useRef()
@@ -84,13 +86,18 @@ function DefaultColumnFilter({
   const count = preFilteredRows.length
 
   return (
-    <input
-      value={filterValue || ''}
-      onChange={e => {
-        setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
-      }}
-      placeholder={`Search ${count} records...`}
-    />
+    <div class="form-group">
+      <div class="col-xs-2">
+        <input
+          value={filterValue || ''}
+          onChange={e => {
+            setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+          }}
+          placeholder={`Search ${count} records...`}
+          
+        />
+      </div>
+    </div>
   )
 }
 
@@ -290,22 +297,25 @@ function Table({ columns, data }) {
           <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
           All
         </div>
-        {allColumns.map(column => (
-            <label>
-              <input type="checkbox" {...column.getToggleHiddenProps()} />{'  '}
-              {column.id}
-            </label>
-          
-        ))}
+        <div id="checking">
+          {allColumns.map(column => (
+              <label>
+                <input type="checkbox" {...column.getToggleHiddenProps()} />{'  '}
+                {column.id}
+              </label>
+            
+          ))}
+        </div>
         <br />
       </div>
-      <table {...getTableProps()}>
+      <div class="table-responsive-sm">
+      <table class="table" {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr class="row"{...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <th class="col-2"{...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render('Header')}
                   {/* Render the columns filter UI */}
                   <div>{column.canFilter ? column.render('Filter') : null}</div>
@@ -323,7 +333,7 @@ function Table({ columns, data }) {
             </tr>
           ))}
           <tr>
-            <th
+            <th class="col-7"
               colSpan={visibleColumns.length}
               style={{
                 textAlign: 'left',
@@ -350,6 +360,7 @@ function Table({ columns, data }) {
           })}
         </tbody>
       </table>
+      </div>
       <br />
       <div>Showing the first 20 results of {rows.length} rows</div>
       <div>
@@ -470,13 +481,6 @@ class ArticlesList extends Component {
             
           },
           {
-            Header: 'Research Participants',
-            accessor: 'researchparticipants',
-            Filter: SelectColumnFilter,
-            
-
-          },
-          {
             Header: 'Research Method',
             accessor: 'researchmethod',
             Filter: SelectColumnFilter,
@@ -515,14 +519,14 @@ class ArticlesList extends Component {
     ]
 
   return (
-    <Styles>
+    // <Styles>
 
     
       
 
       
       <Table columns={columns} data={articles} loading={isLoading} />
-    </Styles>
+    // </Styles>
   )
 }
 }

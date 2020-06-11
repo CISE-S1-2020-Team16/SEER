@@ -14,7 +14,7 @@ const Article = new Schema(
         number: Number ,
         pages: [Number],
         month: String, 
-		sourcetype: [ 'article', 'book','booklet','conference','inbook','incollection','inprocceedings','manual','masterthesis','misc','phdthesis','proceedings','techreport','unpublished'] ,
+		sourcetype: String,
 		credibilityrating : Number,
 		confidencerating : Number,
 	
@@ -22,21 +22,19 @@ const Article = new Schema(
     
 		requestion: String,
 		metric: String,
-		researchparticipants: ['undergraduate','postgraduate','practitioners'],
-		researchmethod: ['case study','field-observation','experiment','interview','survey'],
+		researchparticipants: String,
+		researchmethod: String,
 	
 		
-		outcome: ['yes','no','sometimes'],
-		semethodologies: ['scrum','waterfall','spiral','xp','rational','unified proccess','crystal','clean room','feature driven development',
-		'model driven development','domain driven development','formal methods','problem driven development','cloud computing','service oriented development',
-		'valuse driven development','product driven development','agile'],
-		semethod: ['tdd','bdd','pair programming','planning poker','daily standup','story boards','user story mapping','continous','intergration','retrospectives','burndown charts','requirements','requirements prioritisation','version control', 'code sharing'],
+		outcome: String,
+		semethodologies: String,
+		semethod: String,
 	
 	
 
-		statustype: ['to be moderated','accepted','rejected','analysis accepted'],
+		statustype: String,
 		date: { type: Date, default: Date.now },
-		username: String,
+		
 
 		
 	
