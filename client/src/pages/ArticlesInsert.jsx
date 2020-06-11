@@ -339,6 +339,18 @@ class ArticlesInsert extends Component {
           value={month}
           onChange={this.handleChangeInputMonth}
         />
+        <Label>Confidence Rating (1-100): </Label>
+        <InputText
+          type="text"
+          value={confidencerating}
+          onChange={this.handleChangeInputConfidenceRating}
+        />
+        <Label>Credibility Rating (1-100) : </Label>
+        <InputText
+          type="text"
+          value={credibilityrating}
+          onChange={this.handleChangeInputCredibilityRating}
+        />
         <Label>Source Type: </Label>
           <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
             <option value="article">article</option>
@@ -363,72 +375,58 @@ class ArticlesInsert extends Component {
             <option value="practitioners">Practitioners</option>
           </select>
           <Label>Research Methods: </Label>
-          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
-            <option value="case study">article</option>
-            <option value="book">book</option>
-            <option value="booklet">booklet</option>
-            <option value="conference">conference</option>
-            <option value="inbook">inbook</option>
-            <option value="incollection">incollection</option>
-            <option value="inproceedings">inproceedings</option>
-            <option value="manual">manual</option>
-            <option value="masterthesis">masterthesis</option>
-            <option value="misc">misc</option>
-            <option value="phdthesis">phdthesis</option>
-            <option value="proceedings">proceedings</option>
-            <option value="techreport">techreport</option>
-            <option value="unpublished">unpublished</option>
+          <select value={researchmethod} onChange={this.handleChangeInputResearchMethod}>
+            <option value="case study">Case study</option>
+            <option value="field observation">Field Observation</option>
+            <option value="experiment">Experiment</option>
+            <option value="interview">Interview</option>
+            <option value="survey">Survey</option>
+          </select>
+          <Label>Research Outcome: </Label>
+          <select value={researchOutcomeoptions} onChange={this.handleChangeInputResearchOutcome}>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="sometimes">Sometimes</option>
+
+          </select>
+          <Label>SE Methodology Type: </Label>
+          <select value={sourcetype} onChange={this.handleChangeInputSEMethodologies}>
+            <option value="scrum">Scrum</option>
+            <option value="waterfall">Waterfall</option>
+            <option value="spiral">Spiral</option>
+            <option value="xp">Xp</option>
+            <option value="rational">Rational</option>
+            <option value="unified">Unified Proccess</option>
+            <option value="crystal">Crystal</option>
+            <option value="clean room">Clean Room</option>
+            <option value="feature driven development">Feature Driven Development</option>
+            <option value="model driven development">Model Driven Development</option>
+            <option value="domain driven development">Domain Driven Development</option>
+            <option value="formal methods">Formal Methods</option>
+            <option value="problem driven development">Problem Driven Development</option>
+            <option value="service oriented development">Service Driven Development</option>
+            <option value="valuse driven development">Valuse Driven Development</option>
+            <option value="product driven development">Product Driven Development</option>
+            <option value="agile">Agile</option>
+            
           </select>
           <Label>Source Type: </Label>
           <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
-            <option value="article">article</option>
-            <option value="book">book</option>
-            <option value="booklet">booklet</option>
-            <option value="conference">conference</option>
-            <option value="inbook">inbook</option>
-            <option value="incollection">incollection</option>
-            <option value="inproceedings">inproceedings</option>
-            <option value="manual">manual</option>
-            <option value="masterthesis">masterthesis</option>
-            <option value="misc">misc</option>
-            <option value="phdthesis">phdthesis</option>
-            <option value="proceedings">proceedings</option>
-            <option value="techreport">techreport</option>
-            <option value="unpublished">unpublished</option>
-          </select>
-          <Label>Source Type: </Label>
-          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
-            <option value="article">article</option>
-            <option value="book">book</option>
-            <option value="booklet">booklet</option>
-            <option value="conference">conference</option>
-            <option value="inbook">inbook</option>
-            <option value="incollection">incollection</option>
-            <option value="inproceedings">inproceedings</option>
-            <option value="manual">manual</option>
-            <option value="masterthesis">masterthesis</option>
-            <option value="misc">misc</option>
-            <option value="phdthesis">phdthesis</option>
-            <option value="proceedings">proceedings</option>
-            <option value="techreport">techreport</option>
-            <option value="unpublished">unpublished</option>
-          </select>
-          <Label>Source Type: </Label>
-          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
-            <option value="article">article</option>
-            <option value="book">book</option>
-            <option value="booklet">booklet</option>
-            <option value="conference">conference</option>
-            <option value="inbook">inbook</option>
-            <option value="incollection">incollection</option>
-            <option value="inproceedings">inproceedings</option>
-            <option value="manual">manual</option>
-            <option value="masterthesis">masterthesis</option>
-            <option value="misc">misc</option>
-            <option value="phdthesis">phdthesis</option>
-            <option value="proceedings">proceedings</option>
-            <option value="techreport">techreport</option>
-            <option value="unpublished">unpublished</option>
+            <option value="tdd">TDD</option>
+            <option value="bdd">BDD</option>
+            <option value="pair programming">Pair Programming</option>
+            <option value="planning poker">Planning Poker</option>
+            <option value="daily standup">Daily Standup</option>
+            <option value="story boards">Story Boards</option>
+            <option value="user story mapping">User Story Mapping</option>
+            <option value="continous">Continous</option>
+            <option value="intergration">Intergrating</option>
+            <option value="retrospectives">Retrospective</option>
+            <option value="burndown charts">Burndown Charts</option>
+            <option value="requirements">Requirements</option>
+            <option value="requirements prioritisation">Requirements Prioritisation</option>
+            <option value="version control">Version Control</option>
+            <option value="code sharing">Code Sharing</option>
           </select>
 
 
