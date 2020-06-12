@@ -336,7 +336,7 @@ function Table({ columns, data }) {
       </table>
       </div>
       <br />
-      <div>Showing the first 20 results of {rows.length} rows</div>
+      <div>Showing the first 10 results of {rows.length} rows</div>
       <div>
         <pre>
           <code>{JSON.stringify(state.filters, null, 2)}</code>
@@ -403,6 +403,11 @@ class ArticlesList extends Component {
           {
             Header: 'Author',
             accessor: 'author',
+            filter: 'fuzzyText',
+          },
+                      {
+            Header: 'DOI',
+            accessor: 'doi',
             filter: 'fuzzyText',
           },
         ],
