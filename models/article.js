@@ -17,6 +17,7 @@ const Article = new Schema(
 		sourcetype: String,
 		credibilityrating : Number,
 		confidencerating : Number,
+		doi : String,
 	
 		
     

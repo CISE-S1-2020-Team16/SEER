@@ -411,6 +411,7 @@ class ArticlesList extends Component {
           {
             Header: 'Article',
             accessor: 'article',
+            filter: 'fuzzyText',
             
           },
           {
@@ -422,6 +423,11 @@ class ArticlesList extends Component {
           {
             Header: 'Author',
             accessor: 'author',
+            filter: 'fuzzyText',
+          },
+          {
+            Header: 'DOI',
+            accessor: 'doi',
             filter: 'fuzzyText',
           },
         ],
