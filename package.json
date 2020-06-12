@@ -8,6 +8,7 @@
     "dev:server": "nodemon --ignore './client/' server.js",
     "dev:app": "cd client && npm start",
     "build:app": "cd client && npm build",
+    "test": "mocha",
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
@@ -40,6 +41,8 @@
     "react-data-grid": "^7.0.0-canary.16",
     "react-dropdown": "^1.7.0",
     "react-form": "^4.0.1",
+    "mocha": "3.4.2",
+    "chai": "4.0.2",
     "react-scripts": "^3.4.1",
     "react-search-box": "^2.0.2",
     "react-select": "^3.1.0",
