@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL : https://seer-staging.herokuapp.com/api || "http://localhost:3000/api",
+    baseURL : seer-staging.herokuapp.com/api || "http://localhost:3000/api",
 })
 
 export const insertArticle = payload => api.post(`/article`, payload)
