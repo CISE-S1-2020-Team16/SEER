@@ -1,9 +1,5 @@
-
 import React, { Component } from "react";
 import api from "../api";
-import AsyncSelect from 'react-select/async';
-import { sourceTypeoptions, researchParicipantoptions, researchmethod, researchOutcomeoptions, seMethodologiesoptions, seMethodoptions } from './DropdownData';
-
 import styled from "styled-components";
 
 const Title = styled.h1.attrs({
@@ -47,11 +43,6 @@ const CancelButton = styled.a.attrs({
   margin: 15px 15px 15px 5px;
 `;
 
-
-
-
-
-
 class ArticlesInsert extends Component {
   constructor(props) {
     super(props);
@@ -77,11 +68,10 @@ class ArticlesInsert extends Component {
       semethodologies: "",
       semethod: "",
       statustype: "",
-      
+      doi: "",
     };
   }
 
-  
   handleChangeInputStatusType = async (event) => {
     const statustype = event.target.value;
     this.setState({ statustype });
@@ -114,7 +104,7 @@ class ArticlesInsert extends Component {
     const requestion = event.target.value;
     this.setState({ requestion });
   };
-  handleChangeInputSourceType =async (event) => {
+  handleChangeInputSourceType = async (event) => {
     const sourcetype = event.target.value;
     this.setState({ sourcetype });
   };
@@ -166,12 +156,10 @@ class ArticlesInsert extends Component {
     this.setState({ month });
   };
 
-
-  handleChange = async (event) => {
-    const sourcetype = event.target.value;
-    this.setState({ sourcetype});
-  }
-
+  handleChangeInputDOI = async (event) => {
+    const doi = event.target.value;
+    this.setState({ doi });
+  };
 
   handleIncludeArticle = async () => {
     const {
@@ -195,6 +183,7 @@ class ArticlesInsert extends Component {
       semethodologies,
       semethod,
       statustype,
+      doi,
     } = this.state;
 
     const payload = {
@@ -218,6 +207,7 @@ class ArticlesInsert extends Component {
       semethodologies,
       semethod,
       statustype,
+      doi,
     };
 
     await api.insertArticle(payload).then((res) => {
@@ -243,20 +233,12 @@ class ArticlesInsert extends Component {
         semethodologies: "",
         semethod: "",
         statustype: "",
+        doi: "",
       });
     });
   };
-  
-
-  
-  
-
-
-
-
 
   render() {
-      
     const {
       article,
       author,
@@ -277,8 +259,7 @@ class ArticlesInsert extends Component {
       outcome,
       semethodologies,
       semethod,
-      statustype,
-      
+      doi,
     } = this.state;
 
     return (
@@ -351,84 +332,125 @@ class ArticlesInsert extends Component {
           value={credibilityrating}
           onChange={this.handleChangeInputCredibilityRating}
         />
+        <Label>Research Question : </Label>
+        <InputText
+          type="text"
+          value={requestion}
+          onChange={this.handleChangeInputResearchQuestion}
+        />
+        <Label>Metric : </Label>
+        <InputText
+          type="text"
+          value={metric}
+          onChange={this.handleChangeInputMetric}
+        />
+        <Label>DOI : </Label>
+        <InputText
+          type="text"
+          value={doi}
+          onChange={this.handleChangeInputDOI}
+        />
         <Label>Source Type: </Label>
-          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
-            <option value="article">article</option>
-            <option value="book">book</option>
-            <option value="booklet">booklet</option>
-            <option value="conference">conference</option>
-            <option value="inbook">inbook</option>
-            <option value="incollection">incollection</option>
-            <option value="inproceedings">inproceedings</option>
-            <option value="manual">manual</option>
-            <option value="masterthesis">masterthesis</option>
-            <option value="misc">misc</option>
-            <option value="phdthesis">phdthesis</option>
-            <option value="proceedings">proceedings</option>
-            <option value="techreport">techreport</option>
-            <option value="unpublished">unpublished</option>
-          </select>
-          <Label>Research Participants: </Label>
-          <select value={researchparticipants} onChange={this.handleChangeInputResearchParticipants}>
-            <option value="undergraduate">Under Graduate</option>
-            <option value="postgraduate">Post Graduate</option>
-            <option value="practitioners">Practitioners</option>
-          </select>
-          <Label>Research Methods: </Label>
-          <select value={researchmethod} onChange={this.handleChangeInputResearchMethod}>
-            <option value="case study">Case study</option>
-            <option value="field observation">Field Observation</option>
-            <option value="experiment">Experiment</option>
-            <option value="interview">Interview</option>
-            <option value="survey">Survey</option>
-          </select>
-          <Label>Research Outcome: </Label>
-          <select value={researchOutcomeoptions} onChange={this.handleChangeInputResearchOutcome}>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-            <option value="sometimes">Sometimes</option>
-
-          </select>
-          <Label>SE Methodology Type: </Label>
-          <select value={sourcetype} onChange={this.handleChangeInputSEMethodologies}>
-            <option value="scrum">Scrum</option>
-            <option value="waterfall">Waterfall</option>
-            <option value="spiral">Spiral</option>
-            <option value="xp">Xp</option>
-            <option value="rational">Rational</option>
-            <option value="unified">Unified Proccess</option>
-            <option value="crystal">Crystal</option>
-            <option value="clean room">Clean Room</option>
-            <option value="feature driven development">Feature Driven Development</option>
-            <option value="model driven development">Model Driven Development</option>
-            <option value="domain driven development">Domain Driven Development</option>
-            <option value="formal methods">Formal Methods</option>
-            <option value="problem driven development">Problem Driven Development</option>
-            <option value="service oriented development">Service Driven Development</option>
-            <option value="valuse driven development">Valuse Driven Development</option>
-            <option value="product driven development">Product Driven Development</option>
-            <option value="agile">Agile</option>
-            
-          </select>
-          <Label>Source Type: </Label>
-          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
-            <option value="tdd">TDD</option>
-            <option value="bdd">BDD</option>
-            <option value="pair programming">Pair Programming</option>
-            <option value="planning poker">Planning Poker</option>
-            <option value="daily standup">Daily Standup</option>
-            <option value="story boards">Story Boards</option>
-            <option value="user story mapping">User Story Mapping</option>
-            <option value="continous">Continous</option>
-            <option value="intergration">Intergrating</option>
-            <option value="retrospectives">Retrospective</option>
-            <option value="burndown charts">Burndown Charts</option>
-            <option value="requirements">Requirements</option>
-            <option value="requirements prioritisation">Requirements Prioritisation</option>
-            <option value="version control">Version Control</option>
-            <option value="code sharing">Code Sharing</option>
-          </select>
-
+        <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+          <option value="article">article</option>
+          <option value="book">book</option>
+          <option value="booklet">booklet</option>
+          <option value="conference">conference</option>
+          <option value="inbook">inbook</option>
+          <option value="incollection">incollection</option>
+          <option value="inproceedings">inproceedings</option>
+          <option value="manual">manual</option>
+          <option value="masterthesis">masterthesis</option>
+          <option value="misc">misc</option>
+          <option value="phdthesis">phdthesis</option>
+          <option value="proceedings">proceedings</option>
+          <option value="techreport">techreport</option>
+          <option value="unpublished">unpublished</option>
+        </select>
+        <Label>Research Participants: </Label>
+        <select
+          value={researchparticipants}
+          onChange={this.handleChangeInputResearchParticipants}
+        >
+          <option value="undergraduate">Under Graduate</option>
+          <option value="postgraduate">Post Graduate</option>
+          <option value="practitioners">Practitioners</option>
+        </select>
+        <Label>Research Methods: </Label>
+        <select
+          value={researchmethod}
+          onChange={this.handleChangeInputResearchMethod}
+        >
+          <option value="case study">Case study</option>
+          <option value="field observation">Field Observation</option>
+          <option value="experiment">Experiment</option>
+          <option value="interview">Interview</option>
+          <option value="survey">Survey</option>
+        </select>
+        <Label>Research Outcome: </Label>
+        <select
+          value={outcome}
+          onChange={this.handleChangeInputResearchOutcome}
+        >
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="sometimes">Sometimes</option>
+        </select>
+        <Label>SE Methodology Type: </Label>
+        <select
+          value={semethodologies}
+          onChange={this.handleChangeInputSEMethodologies}
+        >
+          <option value="scrum">Scrum</option>
+          <option value="waterfall">Waterfall</option>
+          <option value="spiral">Spiral</option>
+          <option value="xp">Xp</option>
+          <option value="rational">Rational</option>
+          <option value="unified">Unified Proccess</option>
+          <option value="crystal">Crystal</option>
+          <option value="clean room">Clean Room</option>
+          <option value="feature driven development">
+            Feature Driven Development
+          </option>
+          <option value="model driven development">
+            Model Driven Development
+          </option>
+          <option value="domain driven development">
+            Domain Driven Development
+          </option>
+          <option value="formal methods">Formal Methods</option>
+          <option value="problem driven development">
+            Problem Driven Development
+          </option>
+          <option value="service oriented development">
+            Service Driven Development
+          </option>
+          <option value="valuse driven development">
+            Valuse Driven Development
+          </option>
+          <option value="product driven development">
+            Product Driven Development
+          </option>
+          <option value="agile">Agile</option>
+        </select>
+        <Label>Source Type: </Label>
+        <select value={semethod} onChange={this.handleChangeInputSEMethod}>
+          <option value="tdd">TDD</option>
+          <option value="bdd">BDD</option>
+          <option value="pair programming">Pair Programming</option>
+          <option value="planning poker">Planning Poker</option>
+          <option value="daily standup">Daily Standup</option>
+          <option value="story boards">Story Boards</option>
+          <option value="user story mapping">User Story Mapping</option>
+          <option value="continous">Continous</option>
+          <option value="intergration">Intergrating</option>
+          <option value="retrospectives">Retrospective</option>
+          <option value="burndown charts">Burndown Charts</option>
+          <option value="requirements">Requirements</option>
+          <option value="requirements prioritisation">Requirements Prioritisation</option>
+          <option value="version control">Version Control</option>
+          <option value="code sharing">Code Sharing</option>
+        </select>
 
         <Button onClick={this.handleIncludeArticle}>Add Article</Button>
         <CancelButton href={"/articles/list"}>Cancel</CancelButton>
@@ -438,4 +460,3 @@ class ArticlesInsert extends Component {
 }
 
 export default ArticlesInsert;
-   
