@@ -373,6 +373,7 @@ class ArticlesInsert extends Component {
           value={researchparticipants}
           onChange={this.handleChangeInputResearchParticipants}
         >
+          <option value=" ">Please Select a Value</option>
           <option value="undergraduate">Under Graduate</option>
           <option value="postgraduate">Post Graduate</option>
           <option value="practitioners">Practitioners</option>
