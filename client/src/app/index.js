@@ -13,9 +13,9 @@ function App() {
             <NavBar />
             <Switch>
                 <Route path="/" exact component={ArticlesList} />
-                <Route path="/articles/list" exact component={ArticlesList} />
-                <Route path="/articles/create" exact component={ArticlesInsert} />
-                <Route path="/articles/update/:id" exact component={ArticlesUpdate}/>
+                <Route path="/list" exact component={ArticlesList} />
+                <Route path="/create" exact component={ArticlesInsert} />
+                <Route path="/update/:id" exact component={ArticlesUpdate}/>
                 
             </Switch>
         </Router>
