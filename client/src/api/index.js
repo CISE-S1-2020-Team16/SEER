@@ -1,8 +1,8 @@
-
 import axios from 'axios'
+require('dotenv').config()
 
 const api = axios.create({
-    baseURL : process.env.baseURL || "http://localhost:3000",
+    baseURL : process.env.baseURL || "https://seer-staging.herokuapp.com/api",
 })
 
 export const insertArticle = payload => api.post(`/article`, payload)

@@ -1,10 +1,10 @@
-require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const db = require('./db')
 const path = require("path")
 const http = require("http")
+require('dotenv').config()
 
 // Import Routers
 const articleRouter = require('./routes/article-router')
@@ -31,8 +31,6 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.join(__dirname, "client/build", "index.html"));
     });
 }
-
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 
 const server = http.createServer(app);
 
