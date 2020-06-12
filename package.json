@@ -4,13 +4,13 @@
   "description": "Software Evidence Entry Repositry.",
   "main": "server.js",
   "scripts": {
-    "dev": "run-p dev:**",
     "dev:server": "nodemon --ignore './client/' server.js",
     "dev:app": "cd client && npm start",
     "build:app": "cd client && npm build",
     "start": "node server.js",
     "test": "mocha",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
