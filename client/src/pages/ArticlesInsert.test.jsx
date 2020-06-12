@@ -17,7 +17,7 @@ afterEach(() => {
 describe("", () => {
   it("Renders Article Title", () => {
     act(() => {
-      ReactDOM.render(<App />, rootContainer);
+      ReactDOM.render(<Label />, rootContainer);
     });
     const h1 = rootContainer.querySelector("h1");
     expect(h1.textContent).to.equal("Hello World");

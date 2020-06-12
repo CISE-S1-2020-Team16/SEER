@@ -5,34 +5,6 @@ import { useTable, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy } fr
 import matchSorter from 'match-sorter'
 import api from '../api'
 
-const Styles = styled.div`
-  padding: 1rem;
-
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    th,
-    td {
-      margin: 0;
-      padding: 0.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-
-      :last-child {
-        border-right: 0;
-      }
-    }
-  }
-`
 const IndeterminateCheckbox = React.forwardRef(
     ({ indeterminate, ...rest }, ref) => {
       const defaultRef = React.useRef()
@@ -43,6 +15,7 @@ const IndeterminateCheckbox = React.forwardRef(
       }, [resolvedRef, indeterminate])
   
       return <input type="checkbox" ref={resolvedRef} {...rest} />
+
     }
   )
   
@@ -69,8 +42,9 @@ function GlobalFilter({
         }}
         placeholder={`${count} records...`}
         style={{
-          fontSize: '1.1rem',
+          fontSize: '1 rem',
           border: '0',
+          width: '100 px'
         }}
       />
     </span>
@@ -193,7 +167,7 @@ function NumberRangeColumnFilter({
         }}
         placeholder={`Min (${min})`}
         style={{
-          width: '70px',
+          width: '50px',
           marginRight: '0.5rem',
         }}
       />
@@ -207,7 +181,7 @@ function NumberRangeColumnFilter({
         }}
         placeholder={`Max (${max})`}
         style={{
-          width: '70px',
+          width: '50px',
           marginLeft: '0.5rem',
         }}
       />
@@ -284,22 +258,31 @@ function Table({ columns, data }) {
   const firstPageRows = rows.slice(0, 10)
 
   return (
-    <>
+    <> 
+    <div style={{margin: 2.5 + 'em'}}>
       <div>
-        <div>
-          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
-          All
+      <form>
+        <div class="form-group">
+        <div class="form-check">
+          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle All
         </div>
+        </div>
+        <div class="form-group">
+        <div class="form-check">
         {allColumns.map(column => (
-            <label>
-              <input type="checkbox" {...column.getToggleHiddenProps()} />{'  '}
+            <label style={{margin: 1 + 'em'}}>
+              <input class="form-check-input" type="checkbox" {...column.getToggleHiddenProps()} />{'  '}
               {column.id}
             </label>
-          
         ))}
+        </div>
+        </div>
         <br />
+        </form>
       </div>
-      <table {...getTableProps()}>
+     
+      <div class="table-responsive">
+      <table class="table table-striped table-bordered" {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
             
@@ -342,6 +325,7 @@ function Table({ columns, data }) {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
+                
                 {row.cells.map(cell => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
@@ -350,12 +334,14 @@ function Table({ columns, data }) {
           })}
         </tbody>
       </table>
+      </div>
       <br />
       <div>Showing the first 20 results of {rows.length} rows</div>
       <div>
         <pre>
           <code>{JSON.stringify(state.filters, null, 2)}</code>
         </pre>
+      </div>
       </div>
     </>
   )
@@ -382,8 +368,6 @@ class ArticlesList extends Component {
             articles: [],
             columns: [],
             isLoading: false,
-           
-            
         }
     }
 
@@ -397,13 +381,11 @@ class ArticlesList extends Component {
             })
         })
     }
+
     render() {
     const { articles, isLoading } = this.state
-    
-   
 
-    
-  const columns = [
+    const columns = [
       {
         Header: 'Article',
         
@@ -411,8 +393,6 @@ class ArticlesList extends Component {
           {
             Header: 'Article',
             accessor: 'article',
-            filter: 'fuzzyText',
-            
           },
           {
             Header: 'Title',
@@ -423,11 +403,6 @@ class ArticlesList extends Component {
           {
             Header: 'Author',
             accessor: 'author',
-            filter: 'fuzzyText',
-          },
-          {
-            Header: 'DOI',
-            accessor: 'doi',
             filter: 'fuzzyText',
           },
         ],
@@ -515,20 +490,14 @@ class ArticlesList extends Component {
             accessor: 'date',
 
 
-          },
-        ],
+          }
+        ]
       },
+      
     ]
 
   return (
-    <Styles>
-
-    
-      
-
-      
-      <Table columns={columns} data={articles} loading={isLoading} />
-    </Styles>
+    <Table columns={columns} data={articles} loading={isLoading} />
   )
 }
 }
