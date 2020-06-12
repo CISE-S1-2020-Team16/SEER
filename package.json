@@ -34,9 +34,20 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.16",
     "morgan": "~1.9.1",
+    "node-sass": "^4.14.1",
+    "primeicons": "^4.0.0-rc.2",
+    "primereact": "^4.2.1",
+    "react-bootstrap": "^1.0.1",
+    "react-data-grid": "^7.0.0-canary.16",
+    "react-dropdown": "^1.7.0",
+    "react-form": "^4.0.1",
     "mocha": "3.4.2",
     "chai": "4.0.2",
     "react-scripts": "^3.4.1",
+    "react-search-box": "^2.0.2",
+    "react-select": "^3.1.0",
+    "react-table": "^7.1.0",
+    "react-table-6": "^6.11.0",
     "run-p": "0.0.0",
     "styled-components": "^4.2.0",
     "yarn": "^1.22.4"
@@ -44,6 +55,7 @@
   "devDependencies": {
     "jest": "^24.9.0",
     "nodemon": "^2.0.4",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.0.5"
   }
 }

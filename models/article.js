@@ -2,16 +2,43 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const Article = new Schema(
-    {
-        article: {type: String, required: true}, 
-        author: {type: String, required: true}, 
-        title: {type: String, required: true}, 
-        journal: {type: String, required: true}, 
-        year: {type: String, required: true},  
-        volume: {type: String, required: true}, 
-        number: {type: String, required: true}, 
-        pages: {type: String, required: true}, 
-        month: {type: String, required: true},
+    {	
+	
+		
+        article: String ,
+        author: String ,
+        title: String ,
+        journal: String ,
+        year: Number ,
+        volume: Number ,
+        number: Number ,
+        pages: [Number],
+        month: String, 
+		sourcetype: String,
+		credibilityrating : Number,
+		confidencerating : Number,
+		doi : String,
+	
+		
+    
+		requestion: String,
+		metric: String,
+		researchparticipants: String,
+		researchmethod: String,
+	
+		
+		outcome: String,
+		semethodologies: String,
+		semethod: String,
+	
+	
+
+		statustype: String,
+		date: { type: Date, default: Date.now },
+		
+
+		
+	
     },
 )
 
