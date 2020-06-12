@@ -31,6 +31,15 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.join(__dirname, "client/build", "index.html"));
     });
 }
+// Production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const server = http.createServer(app);
 
