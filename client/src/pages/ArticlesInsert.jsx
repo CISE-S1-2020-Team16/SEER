@@ -351,7 +351,7 @@ class ArticlesInsert extends Component {
           onChange={this.handleChangeInputDOI}
         />
         <Label>Source Type: </Label>
-        <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+          <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
           <option value=" ">Please Select a Value</option>
           <option value="article">article</option>
           <option value="book">book</option>
@@ -440,7 +440,7 @@ class ArticlesInsert extends Component {
         </select>
         <Label>Source Type: </Label>
         <select value={semethod} onChange={this.handleChangeInputSEMethod}>
-          <option value=" ">Please Select a Value</option>
+        <option value=" ">Please Select a Value</option>
           <option value="tdd">TDD</option>
           <option value="bdd">BDD</option>
           <option value="pair programming">Pair Programming</option>
