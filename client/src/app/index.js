@@ -12,14 +12,10 @@ function App() {
         <Router>
             <NavBar />
             <Switch>
+                <Route path="/" exact component={ArticlesList} />
                 <Route path="/articles/list" exact component={ArticlesList} />
-                
                 <Route path="/articles/create" exact component={ArticlesInsert} />
-                <Route
-                    path="/articles/update/:id"
-                    exact
-                    component={ArticlesUpdate}
-                />
+                <Route path="/articles/update/:id" exact component={ArticlesUpdate}/>
                 
             </Switch>
         </Router>
