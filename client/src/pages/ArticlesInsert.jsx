@@ -352,6 +352,7 @@ class ArticlesInsert extends Component {
         />
         <Label>Source Type: </Label>
         <select value={sourcetype} onChange={this.handleChangeInputSourceType}>
+          <option value=" ">Please Select a Value</option>
           <option value="article">article</option>
           <option value="book">book</option>
           <option value="booklet">booklet</option>
@@ -381,6 +382,7 @@ class ArticlesInsert extends Component {
           value={researchmethod}
           onChange={this.handleChangeInputResearchMethod}
         >
+          <option value=" ">Please Select a Value</option>
           <option value="case study">Case study</option>
           <option value="field observation">Field Observation</option>
           <option value="experiment">Experiment</option>
@@ -392,6 +394,7 @@ class ArticlesInsert extends Component {
           value={outcome}
           onChange={this.handleChangeInputResearchOutcome}
         >
+          <option value=" ">Please Select a Value</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
           <option value="sometimes">Sometimes</option>
@@ -401,6 +404,7 @@ class ArticlesInsert extends Component {
           value={semethodologies}
           onChange={this.handleChangeInputSEMethodologies}
         >
+          <option value=" ">Please Select a Value</option>
           <option value="scrum">Scrum</option>
           <option value="waterfall">Waterfall</option>
           <option value="spiral">Spiral</option>
@@ -435,6 +439,7 @@ class ArticlesInsert extends Component {
         </select>
         <Label>Source Type: </Label>
         <select value={semethod} onChange={this.handleChangeInputSEMethod}>
+          <option value=" ">Please Select a Value</option>
           <option value="tdd">TDD</option>
           <option value="bdd">BDD</option>
           <option value="pair programming">Pair Programming</option>
