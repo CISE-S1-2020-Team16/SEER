@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/CISE-S1-2020-Team16/SEER#readme",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.0",
     "chia": "0.0.1",
